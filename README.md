@@ -134,17 +134,17 @@ This will start:
 The application leverages several key LangChain components:
 
 1. **Memory Management**
-   - Uses `ConversationBufferMemory` for maintaining chat history
-   - Enables contextual responses based on previous interactions
+- Uses `ConversationBufferMemory` for maintaining chat history
+- Enables contextual responses based on previous interactions
 
 2. **Model Integration**
-   - Local: Ollama with Mistral model for development
-   - Production: Azure OpenAI for scalable deployment
+- Local: Ollama with Mistral model for development
+- Production: Azure OpenAI for scalable deployment
 
 3. **Conversation Chain**
-   - Manages message flow and conversation state
-   - Handles context and memory updates automatically
+- Manages message flow and conversation state
+- Handles context and memory updates automatically
 
 4. **Environment Awareness**
-   - Automatically switches between local and production models
-   - Maintains consistent API regardless of the underlying model
+- Automatically switches between local and production models
+- Maintains consistent API regardless of the underlying model
