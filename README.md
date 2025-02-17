@@ -6,7 +6,7 @@ A modern chat application built with Vue.js, FastAPI, and .NET Aspire, supportin
 
 - Node.js 20+
 - Python 3.11+
-- .NET 8.0 SDK
+- .NET 9.0 SDK
 - Docker
 - Ollama (for local development)
 - Azure OpenAI Service (for production)
