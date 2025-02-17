@@ -6,6 +6,11 @@ import os
 from typing import Optional
 import json
 import httpx
+from langchain.chains import ConversationChain
+from langchain.memory import ConversationBufferMemory
+from langchain_openai import AzureChatOpenAI
+from langchain_community.llms import Ollama
+from langchain.prompts import PromptTemplate
 
 app = FastAPI()
 
@@ -21,6 +26,10 @@ app.add_middleware(
 # Environment configuration
 ENVIRONMENT = os.getenv("ENVIRONMENT", "local")  # 'local' or 'production'
 
+# Initialize conversation memory
+memory = ConversationBufferMemory()
+
+# Initialize the language model and chain based on environment
 if ENVIRONMENT == "production":
     # Azure OpenAI Configuration
     openai.api_type = "azure"
@@ -28,6 +37,21 @@ if ENVIRONMENT == "production":
     openai.api_version = "2024-02-15-preview"
     openai.api_key = os.getenv("AZURE_OPENAI_KEY")
     AZURE_DEPLOYMENT_NAME = os.getenv("AZURE_DEPLOYMENT_NAME")
+    
+    llm = AzureChatOpenAI(
+        deployment_name=AZURE_DEPLOYMENT_NAME,
+        openai_api_version="2024-02-15-preview",
+        temperature=0.7
+    )
+else:
+    llm = Ollama(model="mistral")
+
+# Create the conversation chain
+conversation = ConversationChain(
+    llm=llm,
+    memory=memory,
+    verbose=True
+)
 
 class Message(BaseModel):
     message: str
@@ -36,44 +60,12 @@ class ChatResponse(BaseModel):
     response: str
     error: Optional[str] = None
 
-async def get_ollama_response(message: str) -> str:
-    """Get response from local Ollama instance"""
-    async with httpx.AsyncClient() as client:
-        response = await client.post(
-            "http://localhost:11434/api/generate",
-            json={
-                "model": "mistral",  # or any other model you've pulled
-                "prompt": message,
-                "stream": False
-            }
-        )
-        if response.status_code == 200:
-            return response.json()["response"]
-        else:
-            raise Exception("Failed to get response from Ollama")
-
-async def get_azure_response(message: str) -> str:
-    """Get response from Azure OpenAI"""
-    response = await openai.ChatCompletion.create(
-        engine=AZURE_DEPLOYMENT_NAME,
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": message}
-        ],
-        temperature=0.7,
-        max_tokens=150
-    )
-    return response.choices[0].message.content
-
 @app.post("/chat")
 async def chat(message: Message) -> ChatResponse:
     try:
-        if ENVIRONMENT == "local":
-            response_text = await get_ollama_response(message.message)
-        else:
-            response_text = await get_azure_response(message.message)
-            
-        return ChatResponse(response=response_text)
+        # Use LangChain's conversation chain to get response
+        response = conversation.predict(input=message.message)
+        return ChatResponse(response=response)
     
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
