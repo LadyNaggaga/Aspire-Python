@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Sdk Name="Aspire.AppHost.Sdk" Version="9.0.0-preview.4.24501.10" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>65bdd3ec-1123-48c6-8223-0011c8ffe59a</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.0.0-preview.4.24501.10" />
+    <PackageReference Include="Aspire.Hosting.Python" Version="9.0.0" />
+    <PackageReference Include="Aspire.Hosting.Nodejs" Version="9.0.0" />
+  </ItemGroup>
+
+</Project>
