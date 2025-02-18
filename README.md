@@ -63,9 +63,14 @@ This application uses LangChain to provide:
 ## Project Structure
 
 ```
-├── aspire/             # .NET Aspire orchestration
-├── backend/            # Python FastAPI backend
-└── frontend/          # Vue.js frontend
+├── fastAspire/         # Root project directory
+    ├── aspire/         # .NET Aspire orchestration
+    ├── backend/        # Python FastAPI backend
+        ├── src/        # FastAPI application code
+        └── requirements.txt
+    └── frontend/       # Vue.js frontend (current directory)
+        ├── src/        # Vue source code
+        └── public/     # Static assets
 ```
 
 ## Setup
@@ -106,14 +111,10 @@ ollama pull mistral
 
 2. Start the application with Aspire:
 ```bash
-cd aspire
+cd fastAspire/fastAspire.AppHost
 dotnet run
 ```
 
-This will start:
-- Frontend at http://localhost:5173
-- Backend at http://localhost:8000
-- Aspire dashboard at http://localhost:15888
 
 ### Production Deployment
 
