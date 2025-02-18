@@ -24,7 +24,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("fastAspire.AppHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6e991a31140f178d12106de8113350d1baa9082a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d37008f611015b86bfbd6cfeae2709bd1409023")]
 [assembly: System.Reflection.AssemblyProductAttribute("fastAspire.AppHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("fastAspire.AppHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
