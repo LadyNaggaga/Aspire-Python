@@ -5,12 +5,12 @@
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:17297;http://localhost:15221",
+      "applicationUrl": "https://localhost:17097;http://localhost:15251",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "DOTNET_ENVIRONMENT": "Development",
-        "DOTNET_DASHBOARD_OTLP_ENDPOINT_URL": "https://localhost:22232",
-        "DOTNET_RESOURCE_SERVICE_ENDPOINT_URL": "https://localhost:23203",
+        "DOTNET_DASHBOARD_OTLP_ENDPOINT_URL": "https://localhost:21232",
+        "DOTNET_RESOURCE_SERVICE_ENDPOINT_URL": "https://localhost:22203",
         "PYTHON_PATH": "C:\\dev\\aspire-python\\backend\\.venv\\Scripts\\python.exe"
       }
     },
@@ -18,12 +18,12 @@
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:15221",
+      "applicationUrl": "http://localhost:15251",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "DOTNET_ENVIRONMENT": "Development",
-        "DOTNET_DASHBOARD_OTLP_ENDPOINT_URL": "http://localhost:22232",
-        "DOTNET_RESOURCE_SERVICE_ENDPOINT_URL": "http://localhost:23203"
+        "DOTNET_DASHBOARD_OTLP_ENDPOINT_URL": "http://localhost:19204",
+        "DOTNET_RESOURCE_SERVICE_ENDPOINT_URL": "http://localhost:20294"
       }
     }
   }
